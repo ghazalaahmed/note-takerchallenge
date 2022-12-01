@@ -2,7 +2,6 @@ const express = require("express");
 const PORT = process.env.port || 3001;
 const app = express();
 const fs = require("fs");
-const uniqId = require("uniqid");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
