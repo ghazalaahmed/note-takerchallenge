@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const { notes } = require("./db/db");
+const notes = require("./db/db");
 
 function createNewNote(body, notesArray) {
   const note = body;
@@ -23,13 +23,14 @@ function createNewNote(body, notesArray) {
 //api routes
 app.get("/api/notes", (req, res) => {
   res.json(notes);
+  console.log(notes);
 });
 
-// app.post("/api/notes", (req, res) => {
-//   req.body.id = uniqueId();
-//   const note = createNewNote(req.body, notes);
-//   res.json(note);
-// });
+app.post("/api/notes", (req, res) => {
+  req.body.id = uniqueId();
+  const note = createNewNote(req.body, notes);
+  res.json(note);
+});
 //HTML routes
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
@@ -38,11 +39,11 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-// //Delete Note
-// app.delete("/notes/:id", (req, res) => {
-//   deleteNote(notes, req.params.id);
-//   res.json(notes);
-// });
+//Delete Note
+app.delete("/notes/:id", (req, res) => {
+  deleteNote(notes, req.params.id);
+  res.json(notes);
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
