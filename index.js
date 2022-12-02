@@ -20,29 +20,34 @@ function createNewNote(body, notesArray) {
   return note;
 }
 
-//api routes
+const uuid = () => {
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+};
+
 app.get("/api/notes", (req, res) => {
   res.json(notes);
   console.log(notes);
 });
 
 app.post("/api/notes", (req, res) => {
-  req.body.id = uniqueId();
+  req.body.id = uuid();
   const note = createNewNote(req.body, notes);
   res.json(note);
 });
-//HTML routes
+
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-//Delete Note
 app.delete("/notes/:id", (req, res) => {
   deleteNote(notes, req.params.id);
-  res.json(notes);
+  res.json(results);
 });
 
 app.listen(PORT, () =>
