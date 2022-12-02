@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const notes = require("./db/db");
+const { notes } = require("./db/db");
 
 function createNewNote(body, notesArray) {
   const note = body;
