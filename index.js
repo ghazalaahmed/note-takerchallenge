@@ -46,8 +46,9 @@ app.get("*", (req, res) => {
 });
 
 app.delete("/notes/:id", (req, res) => {
-  deleteNote(notes, req.params.id);
-  res.json(results);
+  const data = JSON.parse(fs.readFileSync("../data.json", "utf8"));
+  notes = data.filter(id, notes);
+  res.json(notes);
 });
 
 app.listen(PORT, () =>
