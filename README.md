@@ -11,7 +11,6 @@ I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ## SCREENSHOTS
-
 [!Notetaker screenshot 1.png](./images/Notetaker%20screenshot%201.png)
 [!Notetaker screenshot 2.png](./images/Notetaker%20screenshot%202.png)
 
