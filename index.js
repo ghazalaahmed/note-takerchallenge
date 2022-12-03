@@ -45,10 +45,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-app.delete("/notes/:id", (req, res) => {
-  const data = JSON.parse(fs.readFileSync("../data.json", "utf8"));
-  notes = data.filter(id, notes);
-  res.json(notes);
+app.delete("/api/notes/:id", (req, res) => {
+  const { id } = req.params;
+
+  const delNote = notes.findIndex((note) => note.id == id);
+
+  notes.splice(delNote, 1);
+  return res.send();
 });
 
 app.listen(PORT, () =>
