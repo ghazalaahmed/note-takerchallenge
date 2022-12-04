@@ -16,3 +16,5 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 
 ## LINKS
+Link to github: https://github.com/ghazalaahmed/notetaker.git
+Link to heroku: https://note-takerchallenge.herokuapp.com/notes
